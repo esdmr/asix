@@ -1,0 +1,55 @@
+io /str/1 tmp/i
+io /1     tmp/next
+
+// @arg tmp/divisor float
+// @ret tmp/ok      bool
+fn is_divisible
+  io tmp/i        math/a
+  io /str/%       math/f
+  io tmp/divisor  math/b
+  do math
+
+  io math/out math/a
+  io /str/==  math/f
+  io /str/0   math/b
+  do math
+
+  io math/out tmp/ok
+nf
+
+if tmp/next
+  io /1 tmp/not_divisible
+
+  io /str/3 tmp/divisor
+  fc is_divisible
+  if tmp/ok
+    io /str/Fizz self/stdout
+    io /0 tmp/not_divisible
+  fi
+
+  io /str/5 tmp/divisor
+  fc is_divisible
+  if tmp/ok
+    io /str/Buzz self/stdout
+    io /0 tmp/not_divisible
+  fi
+
+  if tmp/not_divisible
+    io tmp/i self/stdout
+  fi
+
+  io /char/lf self/stdout
+
+  io tmp/i  math/a
+  io /str/+ math/f
+  io /str/1 math/b
+  do math
+  io math/out tmp/i
+
+  io tmp/i    math/a
+  io /str/<   math/f
+  io /str/100 math/b
+  do math
+  io math/out tmp/next
+  br
+fi

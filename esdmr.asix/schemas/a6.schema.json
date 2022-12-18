@@ -1,0 +1,94 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"$schema": true,
+		"setup": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"copy": {
+					"type": "object",
+					"additionalProperties": false,
+					"patternProperties": {
+						"^/": {
+							"type": "string"
+						}
+					}
+				},
+				"write": {
+					"type": "object",
+					"additionalProperties": false,
+					"patternProperties": {
+						"^/": {
+							"type": "string"
+						}
+					}
+				},
+				"append": {
+					"type": "object",
+					"additionalProperties": false,
+					"patternProperties": {
+						"^/": {
+							"type": "string"
+						}
+					}
+				},
+				"permissions": {
+					"type": "object",
+					"additionalProperties": false,
+					"patternProperties": {
+						"^/": {
+							"type": "string",
+							"examples": [
+								"",
+								"R",
+								"W",
+								"X",
+								"RW",
+								"RX",
+								"RWX"
+							],
+							"pattern": "^R?W?X?F?$"
+						}
+					}
+				}
+			}
+		},
+		"init": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"pattern": "^/"
+			},
+			"minItems": 1
+		},
+		"out": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"copy": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string",
+						"pattern": "^/"
+					}
+				},
+				"debug": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"branches_graph_dir": {
+							"type": "string",
+							"minLength": 1
+						}
+					}
+				}
+			}
+		}
+	},
+	"required": [
+		"init"
+	]
+}

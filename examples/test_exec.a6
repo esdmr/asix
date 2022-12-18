@@ -1,0 +1,6 @@
+in /lib/lib lib
+
+io /str/-123 tmp/num
+fc lib__sign
+io tmp/out  self/stdout
+io /char/lf self/stdout

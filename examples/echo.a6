@@ -1,0 +1,22 @@
+io /str/nand  math/f
+io /1         tmp/a
+
+if tmp/a
+  io /str/Write       self/stdout
+  io /char/sp         self/stdout
+  io /str/something:  self/stdout
+  io /char/sp         self/stdout
+  do fetch_line
+
+  io self/stdin   tmp/a
+  if tmp/a
+    io /str/You     self/stdout
+    io /char/sp     self/stdout
+    io /str/wrote:  self/stdout
+    io /char/sp     self/stdout
+    io tmp/a        self/stdout
+  fi
+
+  io /char/lf self/stdout
+  br
+fi

@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"module": "Node16",
+		"rootDir": ".",
+		"checkJs": true,
+		"noEmit": true,
+		"strict": true
+	}
+}

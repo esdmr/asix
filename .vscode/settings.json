@@ -1,0 +1,20 @@
+{
+	"cSpell.words": [
+		"appendable",
+		"asix",
+		"slib",
+		"UNEXECABLE",
+		"UNWRITABLE"
+	],
+	"editor.fontLigatures": false,
+	"python.analysis.typeCheckingMode": "strict",
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"esdmr.asix/snippets/*"
+			],
+			"url": "vscode://schemas/snippets"
+		}
+	],
+	"git.branchProtection": [],
+}

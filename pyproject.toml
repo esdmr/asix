@@ -1,0 +1,22 @@
+[tool.pdm.build]
+includes = []
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+name = "asix"
+version = "0.0.0"
+description = ""
+authors = [
+    {name = "esdmr", email = "esdmr0@gmail.com"},
+]
+dependencies = ["lsp<1.0.0,>=0.1.1", "esprima<5.0.0,>=4.0.1", "escodegen<2.0.0,>=1.0.10"]
+requires-python = ">=3.11,<4.0"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.group.dev.dependencies]
+black = "^22.10.0"
+ptpython = "^3.0.22"

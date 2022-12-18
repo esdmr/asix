@@ -1,0 +1,19 @@
+{
+	"setup": {
+		"copy": {
+			"/bin/init": "test_exec.a6",
+			"/lib/lib": "test_lib.a6"
+		},
+		"permissions": {
+			"/lib/lib": "RX"
+		}
+	},
+	"init": [
+		"/bin/init"
+	],
+	"out": {
+		"debug": {
+			"branches_graph_dir": "test_exec.out"
+		}
+	}
+}

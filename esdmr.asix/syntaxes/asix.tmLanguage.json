@@ -1,0 +1,289 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "asix",
+	"patterns": [
+		{
+			"include": "#statements"
+		},
+		{
+			"match": "^\\s*(in)\\s+(\\S+)\\s+(\\w+)\\s*$",
+			"captures": {
+				"1": {
+					"name": "keyword.control.in.asix"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "#expressions"
+						}
+					]
+				},
+				"3": {
+					"name": "entity.name.namespace.asix",
+					"patterns": [
+						{
+							"include": "#expressions"
+						}
+					]
+				}
+			}
+		},
+		{
+			"begin": "^\\s*(fn)\\s+(\\w+)$",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.fn.asix"
+				},
+				"2": {
+					"name": "entity.name.function.asix",
+					"patterns": [
+						{
+							"include": "#namespace"
+						}
+					]
+				}
+			},
+			"end": "^\\s*(nf)\\s*$",
+			"endCaptures": {
+				"1": {
+					"name": "storage.type.nf.asix"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#statements"
+				}
+			]
+		}
+	],
+	"repository": {
+		"namespace": {
+			"name": "entity.name.namespace.asix",
+			"match": "\\w+?(__)(?=\\w)",
+			"captures": {
+				"1": {
+					"name": "punctuation.separator.asix"
+				}
+			}
+		},
+		"comment-expressions": {
+			"patterns": [
+				{
+					"begin": "(\\()(\\w+)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.section.expression.begin.asix"
+						},
+						"2": {
+							"name": "entity.name.function.lisp.asix"
+						}
+					},
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.expression.end.asix"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#comment-expressions"
+						}
+					]
+				},
+				{
+					"match": "(?<=\\s|^|\\()(?:str|bool|int|float|enum)(?=\\s|$|\\))",
+					"name": "entity.name.type.asix"
+				},
+				{
+					"include": "#expressions"
+				}
+			]
+		},
+		"expressions": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.asix",
+					"match": "(?<=^|\\s)(/str(?:/|$))\\S*(?=$|\\s)",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.string.asix"
+						}
+					}
+				},
+				{
+					"name": "string.quoted.single.asix",
+					"match": "(?<=^|\\s)(/char/)(\\S*)(?=$|\\s)",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.character.asix"
+						}
+					}
+				},
+				{
+					"name": "constant.language.boolean.true.asix",
+					"match": "(?<=^|\\s)/1(?=$|\\s)"
+				},
+				{
+					"name": "constant.language.boolean.false.asix",
+					"match": "(?<=^|\\s)/0(?=$|\\s)"
+				},
+				{
+					"name": "entity.name.class.asix",
+					"match": "(?<=^|\\s)/run(?=$|\\s|/)"
+				},
+				{
+					"name": "punctuation.accessor.asix",
+					"match": "/"
+				},
+				{
+					"name": "constant.numeric.asix",
+					"match": "(?<=^|\\s|/)\\d+(?=$|\\s|/)"
+				}
+			]
+		},
+		"statements": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.asix",
+					"match": "^\\s*(//)(.*)$",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.comment.asix"
+						},
+						"2": {
+							"patterns": [
+								{
+									"contentName": "variable.other.asix",
+									"begin": "(?<!\\w)(@)(\\w+)",
+									"beginCaptures": {
+										"1": {
+											"name": "punctuation.definition.block.tag.asix"
+										},
+										"2": {
+											"name": "storage.type.class.asix"
+										}
+									},
+									"end": "(?:$|\\s-\\s)",
+									"patterns": [
+										{
+											"include": "#comment-expressions"
+										}
+									]
+								}
+							]
+						}
+					}
+				},
+				{
+					"include": "#expressions"
+				},
+				{
+					"match": "^\\s*(fc)\\s+(\\w+)\\s*$",
+					"captures": {
+						"1": {
+							"name": "keyword.operator.fc.asix"
+						},
+						"2": {
+							"name": "entity.name.function.asix",
+							"patterns": [
+								{
+									"include": "#namespace"
+								}
+							]
+						}
+					}
+				},
+				{
+					"match": "^\\s*(io)\\s+(\\S+)\\s+(\\S+)\\s*$",
+					"captures": {
+						"1": {
+							"name": "keyword.operator.io.asix"
+						},
+						"2": {
+							"patterns": [
+								{
+									"include": "#expressions"
+								}
+							]
+						},
+						"3": {
+							"patterns": [
+								{
+									"include": "#expressions"
+								}
+							]
+						}
+					}
+				},
+				{
+					"match": "^\\s*(do)\\s+(\\w+(?:\\s+\\w+)*)\\s*$",
+					"captures": {
+						"1": {
+							"name": "keyword.operator.asix"
+						},
+						"2": {
+							"name": "constant.language.asix"
+						}
+					}
+				},
+				{
+					"begin": "^\\s*(if)\\s+(/otherwise)\\s*$",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.if.asix"
+						},
+						"2": {
+							"name": "constant.language.boolean.asix"
+						}
+					},
+					"end": "^\\s*(fi)\\s*$",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.fi.asix"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#statements"
+						}
+					]
+				},
+				{
+					"begin": "^\\s*(if)\\s+(\\S+)\\s*$",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.if.asix"
+						},
+						"2": {
+							"patterns": [
+								{
+									"include": "#expressions"
+								}
+							]
+						}
+					},
+					"end": "^\\s*(fi)\\s*$",
+					"endCaptures": {
+						"1": {
+							"name": "keyword.control.fi.asix"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#statements"
+						},
+						{
+							"match": "^\\s*(br)\\s*$",
+							"captures": {
+								"1": {
+									"name": "keyword.control.asix"
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "source.asix"
+}

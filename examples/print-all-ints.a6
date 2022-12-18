@@ -1,0 +1,24 @@
+io /str/0 tmp/i
+io /1     write/append
+io /1     math/out
+
+if math/out
+  io tmp/i            write/0
+  io /char/lf         write/1
+  io /str/2           write/len
+  io /str/self/stdout write/dst
+  do write
+
+  io tmp/i  math/a
+  io /str/+ math/f
+  io /str/1 math/b
+  do math
+
+  io math/out tmp/i
+
+  io tmp/i    math/a
+  io /str/<   math/f
+  io /str/100 math/b
+  do math
+  br
+fi

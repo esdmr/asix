@@ -1,0 +1,20 @@
+{
+	"setup": {
+		"copy": {
+			"/bin/init": "calc-with-inputs.a6"
+		},
+		"write": {
+			"/tmp/str-first": "Enter the first number: ",
+			"/tmp/str-operator": "Enter the operator (+-*/): ",
+			"/tmp/str-second": "Enter the second number: ",
+			"/tmp/str-result": "The result is: "
+		},
+		"permissions": {
+			"/tmp/str-first": "R",
+			"/tmp/str-operator": "R",
+			"/tmp/str-second": "R",
+			"/tmp/str-result": "R"
+		}
+	},
+	"init": ["/bin/init"]
+}

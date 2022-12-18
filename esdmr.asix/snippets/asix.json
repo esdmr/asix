@@ -1,0 +1,30 @@
+{
+	"fn+nf": {
+		"prefix": "fn",
+		"description": "fn+nf pair",
+		"body": [
+			"fn ${1:name}",
+			"\t$0",
+			"nf",
+		]
+	},
+	"if+fi": {
+		"prefix": "if",
+		"description": "if+fi pair",
+		"body": [
+			"if ${1:condition}",
+			"\t$0",
+			"fi",
+		]
+	},
+	"if+br+fi": {
+		"prefix": "while",
+		"description": "if+br+fi pair",
+		"body": [
+			"if ${1:condition}",
+			"\t$0",
+			"\tbr",
+			"fi",
+		]
+	}
+}

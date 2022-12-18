@@ -1,0 +1,65 @@
+{
+  "name": "asix",
+  "displayName": "asix",
+  "version": "0.0.1",
+  "description": "",
+  "categories": [
+    "Programming Languages"
+  ],
+  "publisher": "esdmr",
+  "imports": {
+    "#python/*": "./python/*.mjs"
+  },
+  "contributes": {
+    "configurationDefaults": {
+      "[asix]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+      }
+    },
+    "grammars": [
+      {
+        "language": "asix",
+        "scopeName": "source.asix",
+        "path": "./syntaxes/asix.tmLanguage.json",
+        "tokenTypes": {
+          "comment.line.double-slash.asix": "comment",
+          "string.quoted.double.asix": "string",
+          "string.quoted.single.asix": "string"
+        }
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": "*.a6.json",
+        "url": "./schemas/a6.schema.json"
+      },
+      {
+        "fileMatch": "*.asix.json",
+        "url": "./schemas/a6.schema.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "asix",
+        "aliases": [
+          "asix"
+        ],
+        "extensions": [
+          ".a6",
+          ".asix"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "asix",
+        "path": "./snippets/asix.json"
+      }
+    ]
+  },
+  "engines": {
+    "vscode": "^1.46.0"
+  }
+}

@@ -1,0 +1,26 @@
+do not_execute
+
+// @arg tmp/num float
+// @ret tmp/out enum(-1, -0, nan, 0, 1)
+fn sign
+  io tmp/num tmp/out
+
+  io tmp/num  math/a
+  io /str/<   math/f
+  io /str/0   math/b
+  do math
+  if math/out
+    io /str/-1 tmp/out
+  fi
+
+  io /str/>   math/f
+  do math
+  if math/out
+    io /str/1 tmp/out
+  fi
+nf
+
+io /str/456 tmp/num
+fc sign
+io tmp/out  self/stdout
+io /char/lf self/stdout

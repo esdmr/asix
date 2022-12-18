@@ -1,0 +1,15 @@
+lockfileVersion: 5.4
+
+specifiers:
+  pyright: ^1.1.281
+
+devDependencies:
+  pyright: 1.1.282
+
+packages:
+
+  /pyright/1.1.282:
+    resolution: {integrity: sha512-qwlGhY/4wkZJJlxiwGzKL7Do6rVSOcXp72zplxJ76BbVIWuiKpGUeYIhLdONEAD22UwLTp8XvmARQzDnJ3EMSQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dev: true

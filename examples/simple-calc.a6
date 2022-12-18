@@ -1,0 +1,35 @@
+io /str/3 math/a
+io /str/5 math/b
+fc setup_write_format
+io /str/self/stdout write/dst
+
+io /str/+ math/f
+fc eval_and_print
+io /str/- math/f
+fc eval_and_print
+io /str/* math/f
+fc eval_and_print
+io /str// math/f
+fc eval_and_print
+
+// @fio write/2 - operator
+// @fio write/8 - result
+// @fdo write
+fn setup_write_format
+  io math/a write/0
+  io /char/sp write/1
+  io /char/sp write/3
+  io math/b write/4
+  io /char/sp write/5
+  io /str/= write/6
+  io /char/sp write/7
+  io /char/lf write/9
+  io /str/10 write/len
+nf
+
+fn eval_and_print
+  do math
+  io math/f write/2
+  io math/out write/8
+  do write
+nf

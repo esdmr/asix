@@ -1,0 +1,27 @@
+// @ret self/stdin str - The read line
+fn fetch_line_or_exit
+  do fetch_line
+
+  if fetch_line/eof
+    io /str/1 self/status
+    do exit
+  fi
+nf
+
+io /tmp/str-first self/stdout
+fc fetch_line_or_exit
+io self/stdin math/a
+
+io /tmp/str-operator self/stdout
+fc fetch_line_or_exit
+io self/stdin math/f
+
+io /tmp/str-second self/stdout
+fc fetch_line_or_exit
+io self/stdin math/b
+
+do math
+
+io /tmp/str-result  self/stdout
+io math/out         self/stdout
+io /char/lf         self/stdout

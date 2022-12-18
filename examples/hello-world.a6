@@ -1,0 +1,14 @@
+// With one write:
+io /str/Hello,      write/0
+io /char/sp         write/1
+io /str/World!      write/2
+io /char/lf         write/3
+io /str/4           write/len
+io /str/self/stdout write/dst
+do write
+
+// With many writes (only works with writable streams):
+io /str/Hello,  self/stdout
+io /char/sp     self/stdout
+io /str/World!  self/stdout
+io /char/lf     self/stdout
